@@ -1,8 +1,9 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     font-family: "Sofia", sans-serif;
+    
 }
 
 body {
@@ -23,13 +24,15 @@ body {
 
 @media screen and (max-width:990px) {
     .nav-pills {
+        
         margin-top: 15px;
         display: flex;
         flex-direction: column;
     }
-    header{
+
+    header {
         display: flex;
-        flex-direction: column;        
+        flex-direction: column;
     }
 
     .categorysearch {
@@ -106,18 +109,25 @@ li {
     justify-content: space-between;
 
 }
-.contact{
+
+.contact {
     height: 100%;
     flex-grow: 2;
-    background-image: url("/images/ticket.jpg"); 
+    background-image: url("/images/ticket.jpg");
     background-size: cover;
-   
+
 }
 
 .search:hover {
     background-color: #D90368;
 }
-
+.card-body{
+    display: flex;
+    background: rgb(195,151,34);
+    background: linear-gradient(180deg, rgba(195,151,34,0.520045518207283) 0%, rgba(253,242,45,0.5704656862745099) 41%);
+    flex-direction: column;
+    justify-content: space-between;
+}
 .foot-card>a {
     background-color: #D90368;
 }
@@ -127,6 +137,7 @@ li {
 }
 
 .foot-card {
+    
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -173,7 +184,8 @@ textarea {
 .input-email {
     padding-right: 4px;
 }
-.form-contact{
+
+.form-contact {
     color: aliceblue;
     font-family: 'Times New Roman', Times, serif;
     font-size: large;
