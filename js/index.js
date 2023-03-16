@@ -1,21 +1,21 @@
 import data from "../data/amazing.js";
+import { loadCard, loadCheck, categoriesList, categorySearch} from "./functions.js"
 
-let cards = '';
+const search = document.getElementById('search');
+const checkElement = document.getElementById('check');
 
-const divElement = document.getElementById('cards');
+loadCard(data.events);
 
-for (let i = 0; i < data.events.length; i++) {
+let categoriesItems = categoriesList(data.events);
 
-    cards += `<div class="card" style="width: 15rem;">
-                    <img src="${data.events[i].image}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">${data.events[i].name}</h5>
-                        <p class="card-text">${data.events[i].description}</p>
-                        <div class="foot-card">
-                            <p>Price $${data.events[i].price}</p>
-                            <a href="./details.html" class="btn btn-danger">View More</a>
-                        </div>
-                    </div>    
-                </div>`
-}
-divElement.innerHTML = cards;
+
+search.addEventListener('input', () => categorySearch(data.events));
+
+checkElement.addEventListener('change', () => categorySearch(data.events));
+
+loadCheck(categoriesItems, checkElement);
+
+
+
+
+

@@ -1,13 +1,12 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box !important;
+    box-sizing: border-box;
     font-family: "Sofia", sans-serif;
-    
+
 }
 
 body {
-    width: 100vw;
     height: 100vh;
     background-color: bisque;
 }
@@ -24,7 +23,7 @@ body {
 
 @media screen and (max-width:990px) {
     .nav-pills {
-        
+
         margin-top: 15px;
         display: flex;
         flex-direction: column;
@@ -42,6 +41,9 @@ body {
     .search {
         margin: 1rem;
     }
+    .datalist{
+        flex-direction: column;
+    }    
 }
 
 header {
@@ -121,23 +123,26 @@ li {
 .search:hover {
     background-color: #D90368;
 }
-.card-body{
+
+.card-body {
     display: flex;
-    background: rgb(195,151,34);
-    background: linear-gradient(180deg, rgba(195,151,34,0.520045518207283) 0%, rgba(253,242,45,0.5704656862745099) 41%);
+    background: rgb(195, 151, 34);
+    background: linear-gradient(180deg, rgba(195, 151, 34, 0.520045518207283) 0%, rgba(253, 242, 45, 0.5704656862745099) 41%);
     flex-direction: column;
     justify-content: space-between;
 }
+
 .foot-card>a {
     background-color: #D90368;
 }
 
 .card-img-top {
-    height: 130px;
+    height: 160px;
+
 }
 
 .foot-card {
-    
+
     display: flex;
     justify-content: space-between;
     align-items: baseline;
@@ -171,7 +176,9 @@ li {
     border-radius: 1em;
     box-shadow: 3px 3px 5px #D90368;
     margin-top: 100px;
-    padding: 5px;
+    padding: 15px;
+    background: rgb(195, 151, 34);
+    background: linear-gradient(180deg, rgba(195, 151, 34, 0.520045518207283) 0%, rgba(253, 242, 45, 0.5704656862745099) 41%);
 }
 
 input,
@@ -189,4 +196,30 @@ textarea {
     color: aliceblue;
     font-family: 'Times New Roman', Times, serif;
     font-size: large;
+}
+
+h5,
+a[href="./details.html"] {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.error {
+    margin-top: 50px;
+    height: 300px;
+}
+
+.dataimg {
+    height: 300px;
+    border-radius: 2rem;
+
+}
+
+#back {
+    height: 70px;
+    border-radius: 50%;
+    border-color: #D90368;
+    box-shadow: 2px 2px 2px #D90368;
+    background-color: #D90368;
+    color: aliceblue;
+
 }
