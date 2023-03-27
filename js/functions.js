@@ -1,4 +1,7 @@
-import data from '../data/amazing.js';
+/* import data from '../data/amazing.js'; */
+
+
+
 
 const divElement = document.getElementById('cards');
 //carga las cards
@@ -11,6 +14,7 @@ export function loadCard(array) {
     for (let i = 0; i < array.length; i++) {
 
         element += `<div class="card" style="width: 18rem;">
+                        <div class="date">${array[i].date}</div>
                         <img src="${array[i].image}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${array[i].name}</h5>
@@ -25,13 +29,13 @@ export function loadCard(array) {
     divElement.innerHTML = element;
 }
 //separa por line de tiempo
-export function timeLine(array, arrayToday, arrayFuture, arrayPast) {
+export function timeLine(array, currentDate, arrayToday, arrayFuture, arrayPast) {
 
     for (let i = 0; i < array.length; i++) {
-        if (array[i].date == data.currentDate) {
+        if (array[i].date == currentDate) {
             arrayToday.push(array[i]);
 
-        } else if (array[i].date > data.currentDate) {
+        } else if (array[i].date > currentDate) {
             arrayFuture.push(array[i]);
 
         } else {
@@ -48,9 +52,6 @@ export function timeLine(array, arrayToday, arrayFuture, arrayPast) {
         if (a.date < b.date) return 1;
     });
 
-    console.table(arrayToday);
-    console.table(arrayFuture);
-    console.table(arrayPast);
 }
 //buscador
 export function seeker(array, element) {
@@ -74,7 +75,6 @@ export function categoriesList(array) {
     let categories = array.map(item => item.category);
     let nonRepeatedCategory = new Set(categories);
     let arrayCategorias = Array.from(nonRepeatedCategory);
-    console.log(arrayCategorias);
     return arrayCategorias;
 }
 //filtra categorias de los chekboxs
@@ -82,14 +82,14 @@ export function checkbox(array) {
     let checks = document.querySelectorAll('input[class="form-check-input"]');
     let arrayChecks = Array.from(checks);
     let chequeds = arrayChecks.filter(check => check.checked);
-    let checkMapsValue = chequeds.map(checkChecked => checkChecked.value);
+    let checkMapsValue = chequeds.map(checkChecked => checkChecked.value);  
+
     if (chequeds.length > 0) {
-        let arrayResult = array.filter(item => checkMapsValue.includes(item.category.toLowerCase()));
+        let arrayResult = array.filter(item => checkMapsValue.includes(item.category.toLowerCase()));        
         return arrayResult;
     } else {
         return array;
     }
-
 }
 //*conbina los metodos de busqueda
 export function categorySearch(array) {

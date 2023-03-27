@@ -1,19 +1,32 @@
-import data from "../data/amazing.js";
-import { loadCard, loadCheck, categoriesList, categorySearch} from "./functions.js"
+import { loadCard, loadCheck, categoriesList, categorySearch } from "./functions.js"
 
 const search = document.getElementById('search');
 const checkElement = document.getElementById('check');
-
-loadCard(data.events);
-
-let categoriesItems = categoriesList(data.events);
+const form = document.forms[0];
 
 
-search.addEventListener('input', () => categorySearch(data.events));
+async function getData() {
+    await fetch('../data/amazing.json').then(response => response.json()).then(data => {
+            
+            let eventsList = data.events;
+            let categoriesItems = categoriesList(eventsList);
 
-checkElement.addEventListener('change', () => categorySearch(data.events));
+            loadCheck(categoriesItems, checkElement);
+            loadCard(eventsList);
+            search.addEventListener('input', () => categorySearch(eventsList));
+            checkElement.addEventListener('change', () => categorySearch(eventsList));
+            
 
-loadCheck(categoriesItems, checkElement);
+
+        }).catch(err => console.error(err));
+}
+getData();
+
+
+
+
+
+
 
 
 

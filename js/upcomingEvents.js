@@ -1,28 +1,30 @@
-import data from "../data/amazing.js";
 import { loadCard, loadCheck, categoriesList, timeLine, categorySearch } from "./functions.js"
 
 const search = document.getElementById('search');
 const checkElement = document.getElementById('check');
 
-let pastEvents = [];
-let upComingEvents = [];
-let todaysEvents = [];
+async function getData() {
+    await fetch('../data/amazing.json').then(response => response.json()).then(data => {
 
-timeLine(data.events, todaysEvents, upComingEvents, pastEvents);
+        let eventsList = data.events;
+        let pastEvents = [];
+        let upComingEvents = [];
+        let todaysEvents = [];
 
-/* function categorySearch() {
-    let firtsFilter = seeker(upComingEvents, search);
+        timeLine(eventsList, data.currentDate, todaysEvents, upComingEvents, pastEvents);
 
-    let secondFilter = checkbox(firtsFilter);
-    loadCard(secondFilter);
-} */
-let categoriesItems = categoriesList(data.events);
-loadCheck(categoriesItems, checkElement);
-search.addEventListener('input', () =>categorySearch(upComingEvents));
+        let categoriesItems = categoriesList(eventsList);
 
-checkElement.addEventListener('change', () =>categorySearch(upComingEvents));
+        loadCheck(categoriesItems, checkElement);
 
+        search.addEventListener('input', () => categorySearch(upComingEvents));
 
-loadCard(upComingEvents);
+        checkElement.addEventListener('change', () => categorySearch(upComingEvents));
 
+        loadCard(upComingEvents);
 
+    })
+}
+getData();
+
+export default upComingEvents;
